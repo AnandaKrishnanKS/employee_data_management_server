@@ -64,8 +64,54 @@ const removeEmployee=(eid)=>{
     })
 }
 
+const getEmplyee=(id)=>{
+ return db.Employee.findOne({id}).then(result=>{
+    if(result){
+      return{
+        statusCode:201,
+        employee:result
+      }
+    }else{
+      return{
+        statusCode:401,
+        message:"Employee not found"
+      }
+    }
+  })
+}
+
+const editEmployee=(id,uname,age,designation,salary,address)=>{
+  return db.Employee.findOne({id}).then(result=>{
+    if(result){
+
+      result.id=id
+      result.uname=uname
+      result.age=age
+      result.designation=designation
+      result.salary=salary
+      result.address=address
+
+      result.save()
+      
+      return{
+        statusCode:200,
+        message:"employee data updated"
+      }
+      
+    }else{
+      return{
+        statusCode:402,
+        message:"employee not found"
+      }
+    }
+  })
+}
+
+
 module.exports = {
   allEmployee,
   addEmployee,
   removeEmployee,
+  getEmplyee,
+  editEmployee,
 };
