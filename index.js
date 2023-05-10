@@ -40,7 +40,12 @@ server.post('/addEmployee',(req,res)=>{
         req.body.age,
         req.body.designation,
         req.body.salary,
-        req.body.address).then(result=>{
+        req.body.address,
+        req.body.teamNo,
+        req.body.teamId,
+        req.body.phoneNo,
+        req.body.email,
+        req.body.image).then(result=>{
             res.status(result.statusCode).json(result)
         })
 })
@@ -71,7 +76,13 @@ server.post('/editEmployee',(req,res)=>{
         req.body.age,
         req.body.desig,
         req.body.salary,
-        req.body.address
+        req.body.address,
+        req.body.teamNo,
+        req.body.teamId,
+        req.body.phoneNo,
+        req.body.email,
+        req.body.image
+        
         ).then(result=>{
             res.status(result.statusCode).json(result)
         })

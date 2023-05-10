@@ -18,12 +18,12 @@ const allEmployee = () => {
 
 //logic for adding new employee
 
-const addEmployee = (id, uname, age, designation, salary, address) => {
-  return db.Employee.findOne({id}).then((result) => {
+const addEmployee = (id, uname, age, designation, salary, address,teamNo,teamId, phoneNo,email,image) => {
+  return db.Employee.findOne({email}).then((result) => {
     if (result) {
       return {
         statusCode: 401,
-        message: "Employee already exists",
+        message: "Employee with same data already exists",
       };
     } else {
       //creating new object
@@ -33,7 +33,12 @@ const addEmployee = (id, uname, age, designation, salary, address) => {
         age,
         designation,
         salary,
-        address
+        address,
+        teamNo,
+        teamId,
+        phoneNo,
+        email,
+        image
       });
 
       //to save object in db
@@ -80,7 +85,7 @@ const getEmplyee=(id)=>{
   })
 }
 
-const editEmployee=(id,uname,age,designation,salary,address)=>{
+const editEmployee=(id,uname,age,designation,salary,address,teamNo,teamId,phoneNo,email,image)=>{
   return db.Employee.findOne({id}).then(result=>{
     if(result){
 
@@ -90,6 +95,11 @@ const editEmployee=(id,uname,age,designation,salary,address)=>{
       result.designation=designation
       result.salary=salary
       result.address=address
+      result.teamNo=teamNo
+      result.teamId=teamId
+      result.phoneNo=phoneNo
+      result.email=email
+      result.image=image
 
       result.save()
       
