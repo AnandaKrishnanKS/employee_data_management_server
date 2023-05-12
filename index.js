@@ -1,5 +1,8 @@
 const express = require('express')
 
+//for environment variable
+require("dotenv").config();
+
 const server=express()
 
 //importing data form logic file
@@ -17,8 +20,8 @@ server.use(express.json())
 
 //seting port to run server
 
-server.listen(8000,()=>{
-    console.log("server started at port 8000");
+server.listen(process.env.PORT ,()=>{
+    console.log("server has started ");
 })
 
 //when an api request come from view to server
