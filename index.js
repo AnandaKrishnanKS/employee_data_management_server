@@ -1,7 +1,7 @@
 const express = require('express')
 
 //for environment variable
-require("dotenv").config();
+// require("dotenv").config();
 
 const server=express()
 
@@ -20,8 +20,8 @@ server.use(express.json())
 
 //seting port to run server
 
-server.listen(process.env.PORT ,()=>{
-    console.log("server has started ");
+server.listen(8000,()=>{
+    console.log("server has started at port 8000");
 })
 
 //when an api request come from view to server
